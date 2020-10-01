@@ -21,3 +21,7 @@ NETLIFY_AUTH_TOKEN - found in Netlify https://app.netlify.com/user/applications#
 
 Additional steps you should do in Netlify: Disable forms (unless you use them)
 
+git commit --allow-empty
+git push
+Verify in Github Actions that the build was successful
+Open Netlify URL to view live website
