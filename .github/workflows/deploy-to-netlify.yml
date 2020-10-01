@@ -1,0 +1,30 @@
+# deploy to netlify
+
+on:
+  push:
+    branches: [ cms ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Cache netlify-cli program
+        id: cache_netlify-cli
+        uses: actions/cache@v2
+        with:
+          path: netlify-cli
+          key: ${{ runner.os }}-netlify-cli
+
+      - name: Get Netlify-CLI program
+        if: steps.cache_netlify-cli.outputs.cache-hit != 'true'
+        run: wget https://github.com/keithkoslowsky/binaries/raw/master/netlify-cli.tar.gz; pigz -dc netlify-cli.tar.gz | tar xf -
+
+      - name: Deploy to Netlify
+        run: netlify-cli/node_modules/netlify-cli/bin/run deploy --dir=admin --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
