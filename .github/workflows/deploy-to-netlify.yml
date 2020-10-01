@@ -10,7 +10,7 @@ jobs:
     name: Deploy
     steps:
       - name: Checkout sources
-        run: git clone -b master --single-branch --depth 1 ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git website
+        uses: actions/checkout@v2
 
       - name: Cache Hugo program
         id: cache_hugo
@@ -21,10 +21,10 @@ jobs:
 
       - name: Get Hugo program
         if: steps.cache_hugo.outputs.cache-hit != 'true'
-        run: cd website; wget https://github.com/keithkoslowsky/binaries/raw/master/hugo.linux.tar.gz; pigz -dc hugo.linux.tar.gz | tar xf -
+        run: wget https://github.com/keithkoslowsky/binaries/raw/master/hugo.linux.tar.gz; pigz -dc hugo.linux.tar.gz | tar xf -
 
       - name: Generate files
-        run: cd website; hugo/hugo.linux -d ../dist -s site -v
+        run: hugo/hugo.linux -d ../dist -s site -v
 
       - name: Cache netlify-cli program
         id: cache_netlify-cli
@@ -35,10 +35,10 @@ jobs:
 
       - name: Get Netlify-CLI program
         if: steps.cache_netlify-cli.outputs.cache-hit != 'true'
-        run: cd website; wget https://github.com/keithkoslowsky/binaries/raw/master/netlify-cli.tar.gz; pigz -dc bin/netlify-cli.tar.gz | tar xf -
+        run: wget https://github.com/keithkoslowsky/binaries/raw/master/netlify-cli.tar.gz; pigz -dc netlify-cli.tar.gz | tar xf -
 
       - name: Deploy to Netlify
-        run: cd website; netlify-cli/node_modules/netlify-cli/bin/run deploy --dir=dist --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID
+        run: netlify-cli/node_modules/netlify-cli/bin/run deploy --dir=dist --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
