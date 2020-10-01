@@ -16,7 +16,7 @@ jobs:
         id: cache_hugo
         uses: actions/cache@v2
         with:
-          path: website/hugo
+          path: hugo
           key: ${{ runner.os }}-hugo-${{ hashFiles('website/.hugo_version') }}
 
       - name: Get Hugo program
@@ -30,7 +30,7 @@ jobs:
         id: cache_netlify-cli
         uses: actions/cache@v2
         with:
-          path: website/netlify-cli
+          path: netlify-cli
           key: ${{ runner.os }}-netlify-${{ hashFiles('website/.netlify-cli_version') }}
 
       - name: Get Netlify-CLI program
