@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    
+    {{ $style := resources.Get "scss/main.scss" | resources.ToCSS (dict "targetPath" "main.css" "outputStyle" "compressed" "enableSourceMap" false) | resources.Fingerprint }}
+    <link href="{{ $style.RelPermalink }}" rel="stylesheet" />
+    
+    <title>{{ .Title }}</title>
+  </head>
+  <body>
+    {{ .Content }}
+
+    {{ $js := resources.Get "js/main.js" | js.Build "main.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $js.RelPermalink }}"></script>
+  </body>
+</html>
