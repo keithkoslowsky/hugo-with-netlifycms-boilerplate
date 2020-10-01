@@ -24,7 +24,7 @@ jobs:
         run: wget https://github.com/keithkoslowsky/binaries/raw/master/netlify-cli.tar.gz; pigz -dc netlify-cli.tar.gz | tar xf -
 
       - name: Deploy to Netlify
-        run: netlify-cli/node_modules/netlify-cli/bin/run deploy --dir=admin --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID
+        run: netlify-cli/node_modules/netlify-cli/bin/run deploy --dir=public --prod --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID_CMS
         env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID_CMS: ${{ secrets.NETLIFY_SITE_ID_CMS }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
