@@ -1,22 +1,31 @@
 - [ ] Signup for Github and Netlify
-- [ ] Enable two step authentication for both Github and Netlify
-- [ ] Create a repository in Github and make it private
-- [ ] Copy the files from this repo to your new project directory
 
+- [ ] Enable two step authentication for both Github and Netlify
+
+- [ ] Download code for the website generator (read-only version of the site), unzip it, and cleanup the zip file
 ```
-cd [PROJECT_DIRECTORY]
+wget -O hugo-with-netlifycms-boilerplate-master.zip https://github.com/keithkoslowsky/hugo-with-netlifycms-boilerplate/archive/master.zip; unzip hugo-with-netlifycms-boilerplate-master.zip; rm hugo-with-netlifycms-boilerplate-master.zip
+```
+- [ ] Copy files you just downloaded into your new project directory
+```cp -r hugo-with-netlifycms-boilerplate-master [NEW_PROJECT_NAME]
+```
+
+- [ ] Create a repository in Github and make it private. In the [NEW_PROJECT_NAME] directory, commit those files and push it up the Github repo you just made. Instructions on how to do that will be provided when you create your repo in Github.
+
+- [ ] Change the github folder to .github. By doing this, it will enable Github Actions to run when you push up the branch.
+```
 mv github .github
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M master
-git remote add origin [GITHUB_PROJECT_URL]
-git push -u origin master
 ```
+
+The Github Action pulls down the latest from the branch, downlod some dependencies, cache them for quicker use later, run the Hugo generator in production mode, and push up the dist directory from the build to Netlify.
+
 
 - [ ] Create a new site in Netlify
-- [ ] Connect Github in Netlify. Leave all the build fields blank
+
+- [ ] In the Netlify site, link the Github repo. Leave all the build fields blank
+
 - [ ] After it is Published, go into Site settings->Build and deploy->Edit Settings and under Builds...Stop builds
+
 - [ ] In Github add two secrets...Settings->Secrets.
 ```
 NETLIFY_SITE_ID - found in Netlify General tab...API ID
