@@ -3,6 +3,7 @@ Enable two step authentication for both Github and Netlify
 
 Create a repository in Github and make it private.
 Copy the files from hugo-with-netlifycms-boilerplate
+mv github .github
 git init
 git add README.md
 git commit -m "first commit"
