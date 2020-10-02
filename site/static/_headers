@@ -1,0 +1,9 @@
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Strict-Transport-Security: max-age=31536000; includeSubDomains;
+  X-Content-Type-Options: nosniff
+  Content-Security-Policy: script-src 'self'
+  Expect-CT: max-age=604800, enforce
+  Referrer-Policy: same-origin
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(), usb=()
