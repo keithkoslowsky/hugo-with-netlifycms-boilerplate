@@ -12,6 +12,8 @@ Additional steps you should do in Netlify: Disable forms (unless you use them)
 
 Edit public/admin/config.yml and change site_url to your website that will display the static generated content
 
+The boilerplate has a github directory. You should `mv github .github` in your project so the Github Action will run automatically
+
 git push origin cms
 
 Identity->Enable Identity
