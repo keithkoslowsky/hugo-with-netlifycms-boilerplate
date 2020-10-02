@@ -44,6 +44,8 @@ The Github Action pulls down the latest from the branch, downlods any dependenci
 
 - [ ] Go into Site settings->Build and deploy->Edit Settings and under Builds...Stop builds
 
+- [ ] You should disable Form detection in Netlify...Build & Deploy->Form detection
+
 - [ ] In Github add two secrets...Settings->Secrets.
 ```
 NETLIFY_SITE_ID - found in Netlify General tab...API ID
