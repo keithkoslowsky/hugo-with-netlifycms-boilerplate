@@ -7,7 +7,8 @@
 wget -O hugo-with-netlifycms-boilerplate-master.zip https://github.com/keithkoslowsky/hugo-with-netlifycms-boilerplate/archive/master.zip; unzip hugo-with-netlifycms-boilerplate-master.zip; rm hugo-with-netlifycms-boilerplate-master.zip
 ```
 - [ ] Copy files you just downloaded into your new project directory
-```cp -r hugo-with-netlifycms-boilerplate-master [NEW_PROJECT_NAME]
+```
+cp -r hugo-with-netlifycms-boilerplate-master [NEW_PROJECT_NAME]
 ```
 
 - [ ] Create a repository in Github and make it private. In the [NEW_PROJECT_NAME] directory, commit those files and push it up the Github repo you just made. Instructions on how to do that will be provided when you create your repo in Github.
